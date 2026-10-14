@@ -1,0 +1,13 @@
+{
+  "name": "zotero-collection-relations-dev",
+  "private": true,
+  "description": "Development commands for the Zotero Collection Relations plugin; release version lives in manifest.json.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "bash scripts/validate.sh",
+    "test:ui": "python3 scripts/workbench_ui_probe.py && python3 scripts/preferences_ui_probe.py && python3 scripts/node_ui_probe.py && python3 scripts/collection_navigation_ui_probe.py && python3 scripts/language_ui_probe.py",
+    "build": "python3 scripts/build_xpi.py"
+  }
+}

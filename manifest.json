@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Zotero Collection Relations",
+  "version": "0.8.7",
+  "description": "Visualize citation relationships in Zotero collections and discover research from selected papers.",
+  "author": "Collection Relations contributors",
+  "applications": {
+    "zotero": {
+      "id": "zotero-literature-graph@paper-project.local",
+      "strict_min_version": "9.0",
+      "strict_max_version": "9.0.*",
+      "update_url": "https://raw.githubusercontent.com/LLPetro/Zotero-Collection-Relations/main/updates.json"
+    }
+  },
+  "homepage_url": "https://github.com/LLPetro/Zotero-Collection-Relations"
+}

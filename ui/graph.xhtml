@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head><meta charset="utf-8"/><title>Zotero Collection Relations</title><link rel="stylesheet" href="graph.css?zlg=0.8.7"/></head>
+<body data-workspace="collection" data-development-version="0.8.7">
+  <header class="zlg-topbar">
+    <div class="zlg-title-block"><div><h1><button id="switch-collection" type="button" class="zlg-collection-heading" title="切换文献集" aria-label="切换文献集" aria-haspopup="dialog" aria-controls="collection-dialog" data-zlg-title="切换文献集" data-zlg-label="切换文献集"><svg xmlns="http://www.w3.org/2000/svg" class="zlg-app-mark" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 6V4.5h6l2 2h8V16H2Z"/><path d="M2 8h16"/></svg><span id="graph-title"><span data-zlg-text="文献集关系">文献集关系</span></span><span class="zlg-heading-chevron" aria-hidden="true"></span></button></h1><span class="zlg-title-meta">Zotero Collection Relations</span></div></div>
+    <nav class="zlg-workspace-tabs" aria-label="工作范围" data-zlg-label="工作范围">
+      <button id="workspace-collection" type="button" aria-pressed="true" class="is-active"><span data-zlg-text="文献集关系">文献集关系</span></button>
+      <button id="workspace-discovery" type="button" aria-pressed="false" disabled="disabled"><span data-zlg-text="发现结果">发现结果</span></button>
+    </nav>
+    <button id="toggle-search-queue" type="button" aria-expanded="false" aria-controls="search-queue"><span data-zlg-text="检索队列">检索队列</span> <span id="queue-count">0</span></button>
+    <button id="open-settings" class="zlg-settings-button" type="button" title="打开设置" data-zlg-title="打开设置"><span data-zlg-text="设置">设置</span></button>
+  </header>
+  <main class="zlg-shell">
+    <aside class="zlg-results" aria-label="当前文献目录" data-zlg-label="当前文献目录">
+      <div class="zlg-catalog-heading"><h2 id="catalog-title"><span data-zlg-text="文献集目录">文献集目录</span></h2><span id="catalog-scope"><span data-zlg-text="当前文献集">当前文献集</span></span></div>
+      <div class="zlg-filter-field">
+          <label for="filter-query"><span data-zlg-text="搜索当前文献">搜索当前文献</span></label>
+          <input id="filter-query" type="search" placeholder="标题、作者或期刊" aria-label="筛选候选结果：标题、作者或期刊" data-zlg-placeholder="标题、作者或期刊" data-zlg-label="筛选候选结果：标题、作者或期刊"></input>
+        </div>
+      <details id="catalog-filters" class="zlg-catalog-filters"><summary><span data-zlg-text="筛选文献">筛选文献</span> <span id="filter-count" hidden="hidden">0</span></summary><div class="zlg-filter-panel">
+        <div class="zlg-filter-field zlg-scope-field">
+          <label for="collection-picker"><span data-zlg-text="所属文献集">所属文献集</span></label>
+          <button id="collection-picker" type="button" title="按所属文献集筛选" data-zlg-title="按所属文献集筛选"><span data-zlg-text="全部文献集">全部文献集</span></button>
+        </div>
+        <div class="zlg-filter-field">
+          <label><span data-zlg-text="文献来源">文献来源</span></label>
+          <input id="filter-library" type="hidden" value="all"></input>
+          <div class="zlg-source-toggle" role="group" aria-label="文献来源" data-zlg-label="文献来源">
+            <button type="button" data-library-source="all" class="is-active" aria-pressed="true"><span data-zlg-text="全部">全部</span></button>
+            <button type="button" data-library-source="in" aria-pressed="false"><span data-zlg-text="库内">库内</span></button>
+            <button type="button" data-library-source="out" aria-pressed="false"><span data-zlg-text="外部">外部</span></button>
+          </div>
+        </div>
+        <div id="more-filters" class="zlg-more-filters">
+          <div class="zlg-more-filter-body">
+            <div class="zlg-filter-field">
+              <label><span data-zlg-text="年份">年份</span></label>
+              <div class="zlg-filter-row">
+                <input id="filter-year-from" type="number" min="1800" max="2200" placeholder="起始年" aria-label="起始年份" data-zlg-placeholder="起始年" data-zlg-label="起始年份"></input>
+                <span>–</span>
+                <input id="filter-year-to" type="number" min="1800" max="2200" placeholder="结束年" aria-label="结束年份" data-zlg-placeholder="结束年" data-zlg-label="结束年份"></input>
+              </div>
+              <span id="year-error" class="zlg-field-error" hidden="hidden"><span data-zlg-text="起始年不能晚于结束年">起始年不能晚于结束年</span></span>
+            </div>
+            <div class="zlg-filter-field">
+              <label><span data-zlg-text="文献类型">文献类型</span></label>
+              <select id="filter-type" aria-label="文献类型" data-zlg-combobox="filter" data-zlg-label="文献类型">
+                <option value="all" data-zlg-text="全部类型">全部类型</option>
+                <option value="article" data-zlg-text="期刊论文">期刊论文</option>
+                <option value="review" data-zlg-text="综述">综述</option>
+                <option value="preprint" data-zlg-text="预印本">预印本</option>
+                <option value="book-chapter" data-zlg-text="书籍章节">书籍章节</option>
+                <option value="dissertation" data-zlg-text="学位论文">学位论文</option>
+              </select>
+            </div>
+            <div class="zlg-filter-checks">
+              <label><input id="filter-has-pdf" type="checkbox"></input><span data-zlg-text="有本地 PDF">有本地 PDF</span></label>
+              <label><input id="filter-duplicate" type="checkbox"></input><span data-zlg-text="本地重复项">本地重复项</span></label>
+              <label><input id="filter-reading" type="checkbox"></input><span data-zlg-text="稍后阅读">稍后阅读</span></label>
+              <label><input id="filter-retracted" type="checkbox" checked="checked"></input><span data-zlg-text="显示撤稿论文">显示撤稿论文</span></label>
+            </div>
+          </div>
+        </div>
+      </div></details>
+        <div id="active-filters" class="zlg-active-filters" aria-label="当前筛选条件" data-zlg-label="当前筛选条件"></div>
+        <div class="zlg-filter-reset-row">
+          <span id="filter-summary"><span data-zlg-text="未应用筛选">未应用筛选</span></span>
+          <button id="clear-filters" type="button" disabled="disabled"><span data-zlg-text="重置筛选">重置筛选</span></button>
+        </div>
+        <div id="session-adjustments" class="zlg-session-adjustments" hidden="hidden">
+          <span id="session-adjustment-summary"><span data-zlg-text="视图调整">视图调整</span></span>
+          <span class="zlg-spacer"></span>
+          <button id="undo-session-action" type="button" hidden="hidden"><span data-zlg-text="撤销">撤销</span></button>
+          <button id="manage-session-state" type="button"><span data-zlg-text="管理">管理</span></button>
+        </div>
+      <div class="zlg-result-heading">
+        <strong id="result-summary"><span data-zlg-text="当前图谱">当前图谱</span></strong>
+        <span id="seed-count"><span data-zlg-text="0 个检索起点">0 个检索起点</span></span>
+      </div>
+      <div id="result-list" class="zlg-result-list" role="list" aria-label="文献结果" data-zlg-label="文献结果"></div>
+    </aside>
+    <section class="zlg-canvas-panel" aria-label="关系图与论文详情" data-zlg-label="关系图与论文详情">
+      <div class="zlg-canvas-toolbar">
+        <div class="zlg-view-tools" role="group" aria-label="图谱视图" data-zlg-label="图谱视图">
+          <button data-mode="timeline" type="button" aria-pressed="false"><span data-zlg-text="时间线">时间线</span></button>
+          <button class="is-active" data-mode="galaxy" type="button" aria-pressed="true"><span data-zlg-text="关系图">关系图</span></button>
+        </div>
+        <button id="fit-graph" class="zlg-fit-button" type="button" title="缩放并居中当前图谱" data-zlg-title="缩放并居中当前图谱"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg><span><span data-zlg-text="显示全图">显示全图</span></span></button>
+        <span class="zlg-spacer"></span>
+        <div class="zlg-node-size-control">
+          <span><span data-zlg-text="节点大小">节点大小</span></span>
+          <select id="node-size-mode" aria-label="节点大小依据" data-zlg-combobox="size" data-zlg-label="节点大小依据">
+            <option value="citations" selected="selected" data-zlg-text="被引量">被引量</option>
+            <option value="degree" data-zlg-text="连接度">连接度</option>
+            <option value="uniform" data-zlg-text="统一">统一</option>
+          </select>
+        </div>
+        <span id="graph-counts"></span>
+      </div>
+      <div id="collection-summary" class="zlg-scope-summary"><span data-zlg-text="未连线不代表无关联。">未连线不代表无关联。</span></div>
+      <div id="result-request-note" class="zlg-request-note" role="status" hidden="hidden"></div>
+      <div class="zlg-history-row" id="discovery-history" hidden="hidden"><div class="zlg-toolbar zlg-history" role="toolbar" aria-label="探索历史" data-zlg-label="探索历史">
+      <button id="history-home" type="button" title="恢复首次查找的队列，不立即检索" data-zlg-title="恢复首次查找的队列，不立即检索"><span data-zlg-text="恢复初始队列">恢复初始队列</span></button>
+      <button id="history-back" type="button" title="返回上一个检索步骤" data-zlg-title="返回上一个检索步骤"><span data-zlg-text="上一步">上一步</span></button>
+      <button id="history-forward" type="button" title="前往下一个检索步骤" data-zlg-title="前往下一个检索步骤"><span data-zlg-text="下一步">下一步</span></button>
+    </div></div>
+      <div class="zlg-graph-stage">
+        <div id="graph-canvas" class="zlg-graph-canvas" aria-label="文献关系网络" aria-describedby="layout-semantics zlg-semantic-warning" data-zlg-label="文献关系网络"></div>
+        <div id="node-size-legend" class="zlg-node-size-legend" aria-live="polite">
+        <span class="zlg-size-dot is-small"></span><span class="zlg-size-dot is-medium"></span><span class="zlg-size-dot is-large"></span>
+        <span id="node-size-legend-text"><span data-zlg-text="大小：OpenAlex 被引量">大小：OpenAlex 被引量</span></span>
+      </div>
+        <div class="zlg-readonly" id="readonly-badge"><span data-zlg-text="保护模式 · Zotero 只读">保护模式 · Zotero 只读</span></div>
+        <div class="zlg-graph-hint" title="悬停预览；Ctrl+滚轮或 PgUp/PgDn 切换重叠节点" data-zlg-title="悬停预览；Ctrl+滚轮或 PgUp/PgDn 切换重叠节点"><span data-zlg-text="滚轮缩放 · 单击查看详情 · 拖动画布">滚轮缩放 · 单击查看详情 · 拖动画布</span></div>
+      </div>
+      <div class="zlg-graph-footer">
+        <div class="zlg-graph-legend" aria-label="图谱图例" data-zlg-label="图谱图例">
+        <span><span class="zlg-dot zlg-dot-teal"></span><span data-zlg-text="Zotero 已有">Zotero 已有</span></span>
+        <span><span class="zlg-dot zlg-dot-gray"></span><span data-zlg-text="外部候选">外部候选</span></span>
+        <span id="result-seed-legend" hidden="hidden"><span class="zlg-seed-ring-sample"></span><span data-zlg-text="查找起点">查找起点</span></span>
+        <span><span class="zlg-line-sample"></span><span data-zlg-text="引用">引用</span></span>
+        <span title="OpenAlex related_works 推荐；不提供精确相似度" data-zlg-title="OpenAlex related_works 推荐；不提供精确相似度"><span class="zlg-line-sample is-dashed"></span><span data-zlg-text="相关推荐">相关推荐</span></span>
+        <span id="layout-semantics" class="zlg-layout-semantics"><span data-zlg-text="距离不代表相似度">距离不代表相似度</span></span>
+      </div>
+        <div id="collection-pages" class="zlg-page-controls"><button id="collection-page-back" type="button" aria-label="上一页文献" data-zlg-label="上一页文献"><span data-zlg-text="上一页">上一页</span></button><span id="collection-page-label"></span><button id="collection-page-next" type="button" aria-label="下一页文献" data-zlg-label="下一页文献"><span data-zlg-text="下一页">下一页</span></button></div>
+      </div>
+      <div id="graph-status" class="zlg-statusbar" aria-live="polite"></div>
+      <aside id="graph-detail" class="zlg-detail is-empty" aria-label="论文详情" data-zlg-label="论文详情"></aside>
+    </section>
+    <aside id="search-queue" class="zlg-discovery-workspace" hidden="hidden" aria-labelledby="discovery-heading">
+      <div class="zlg-queue-heading"><div><h2 id="discovery-heading"><span data-zlg-text="检索队列">检索队列</span></h2></div><button id="close-search-queue" type="button" aria-label="收起检索队列" data-zlg-label="收起检索队列">×</button></div>
+      <div class="zlg-discovery-context"><strong id="discovery-seed-summary"><span data-zlg-text="尚未选入论文">尚未选入论文</span></strong><div class="zlg-queue-edit-actions"><button id="undo-queue-selection" type="button" title="撤销上次队列修改" hidden="hidden" data-zlg-title="撤销上次队列修改"><span data-zlg-text="撤销">撤销</span></button><button id="clear-discovery-selection" type="button"><span data-zlg-text="清空">清空</span></button></div></div>
+      <div class="zlg-selection-tray"><ul id="discovery-seed-list" aria-label="待检索文献" data-zlg-label="待检索文献"></ul><p id="discovery-selection-empty"><span data-zlg-text="勾选文献，加入队列。">勾选文献，加入队列。</span></p></div>
+      <div class="zlg-queue-submit">
+        <div class="zlg-queue-label"><span data-zlg-text="查找方向">查找方向</span></div>
+        <div class="zlg-discovery-actions" role="group" aria-label="查找方向" data-zlg-label="查找方向">
+          <button data-discover="similar" type="button" aria-pressed="true"><strong><span data-zlg-text="相关研究">相关研究</span></strong><span><span data-zlg-text="OpenAlex 推荐">OpenAlex 推荐</span></span></button>
+          <button data-discover="references" type="button" aria-pressed="false"><strong><span data-zlg-text="参考文献">参考文献</span></strong><span><span data-zlg-text="所选文献引用的内容">所选文献引用的内容</span></span></button>
+          <button data-discover="citations" type="button" aria-pressed="false"><strong><span data-zlg-text="后续引用">后续引用</span></strong><span><span data-zlg-text="引用所选文献的研究">引用所选文献的研究</span></span></button>
+        </div>
+        <div class="zlg-limit-label"><span><span data-zlg-text="每次最多">每次最多</span></span><select id="result-limit" aria-label="下次查找的结果上限" data-zlg-combobox="compact" data-zlg-label="下次查找的结果上限">
+            <option value="10">10</option><option value="20" selected="selected">20</option><option value="40">40</option>
+          </select><span><span data-zlg-text="篇结果">篇结果</span></span></div>
+        <button id="run-discovery" type="button"><span data-zlg-text="开始查找">开始查找</span></button>
+        <button id="cancel-discovery" type="button" hidden="hidden"><span data-zlg-text="取消查找">取消查找</span></button>
+        <button id="refresh-discovery" type="button" title="忽略已缓存结果，按当前队列重新查找" data-zlg-title="忽略已缓存结果，按当前队列重新查找"><span data-zlg-text="重新查找">重新查找</span></button>
+        <p id="discovery-context-note" aria-live="polite"></p>
+      </div>
+    </aside>
+  </main>
+  <dialog id="collection-dialog" class="zlg-collection-dialog" aria-labelledby="collection-dialog-title">
+    <form method="dialog">
+      <header>
+        <div>
+          <strong id="collection-dialog-title"><span data-zlg-text="筛选文献集">筛选文献集</span></strong>
+          <p id="collection-dialog-help"><span data-zlg-text="按所属文献集筛选结果。">按所属文献集筛选结果。</span></p>
+        </div>
+        <button value="cancel" type="submit" aria-label="关闭" data-zlg-label="关闭">×</button>
+      </header>
+      <input id="collection-query" type="search" placeholder="搜索文献集名称或路径" aria-label="搜索文献集" data-zlg-placeholder="搜索文献集名称或路径" data-zlg-label="搜索文献集"></input>
+      <label class="zlg-collection-option"><input id="collection-recursive" type="checkbox" checked="checked"></input><span data-zlg-text="包含子文献集">包含子文献集</span></label>
+      <div id="collection-list" class="zlg-collection-list" role="tree" tabindex="0" aria-label="Zotero 文献集" data-zlg-label="Zotero 文献集"></div>
+      <p id="collection-dialog-feedback" class="zlg-detail-help" role="status" aria-live="polite" hidden="hidden"></p>
+      <footer>
+        <button id="collection-clear" value="cancel" type="button"><span data-zlg-text="显示全部">显示全部</span></button>
+        <span class="zlg-spacer"></span>
+        <button value="cancel" type="submit"><span data-zlg-text="取消">取消</span></button>
+        <button id="collection-apply" value="cancel" type="button" class="is-primary"><span data-zlg-text="应用筛选">应用筛选</span></button>
+      </footer>
+    </form>
+  </dialog>
+  <dialog id="session-state-dialog" class="zlg-state-dialog" aria-labelledby="session-state-dialog-title">
+    <form method="dialog">
+      <header>
+        <div>
+          <strong id="session-state-dialog-title"><span data-zlg-text="视图调整">视图调整</span></strong>
+          <p><span data-zlg-text="仅影响本次探索，不修改文献。">仅影响本次探索，不修改文献。</span></p>
+        </div>
+        <button value="cancel" type="submit" aria-label="关闭" data-zlg-label="关闭">×</button>
+      </header>
+      <div class="zlg-state-dialog-body">
+        <section>
+          <div class="zlg-state-section-heading">
+            <strong id="hidden-state-heading"><span data-zlg-text="已隐藏">已隐藏</span></strong>
+            <button id="restore-all-hidden" type="button"><span data-zlg-text="全部恢复">全部恢复</span></button>
+          </div>
+          <div id="hidden-state-list" class="zlg-state-list"></div>
+        </section>
+        <section>
+          <div class="zlg-state-section-heading">
+            <strong id="excluded-state-heading"><span data-zlg-text="不相关">不相关</span></strong>
+            <button id="restore-all-excluded" type="button"><span data-zlg-text="全部恢复">全部恢复</span></button>
+          </div>
+          <div id="excluded-state-list" class="zlg-state-list"></div>
+        </section>
+        <section>
+          <div class="zlg-state-section-heading">
+            <strong id="collapsed-state-heading"><span data-zlg-text="已收起">已收起</span></strong>
+            <button id="restore-all-collapsed" type="button"><span data-zlg-text="全部展开">全部展开</span></button>
+          </div>
+          <div id="collapsed-state-list" class="zlg-state-list"></div>
+        </section>
+      </div>
+      <footer>
+        <span class="zlg-spacer"></span>
+        <button value="cancel" type="submit"><span data-zlg-text="完成">完成</span></button>
+      </footer>
+    </form>
+  </dialog>
+  <script src="messages.js?zlg=0.8.7"></script>
+  <script src="i18n.js?zlg=0.8.7"></script>
+  <script src="host-appearance.js?zlg=0.8.7"></script>
+  <script src="view-state.js?zlg=0.8.7"></script>
+  <script src="paper-actions.js?zlg=0.8.7"></script>
+  <script src="graph-renderer.js?zlg=0.8.7"></script>
+  <script src="collection-tree.js?zlg=0.8.7"></script>
+  <script src="graph-window.js?zlg=0.8.7"></script>
+</body></html>

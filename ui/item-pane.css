@@ -1,0 +1,77 @@
+.zlg-pane {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px 8px 10px;
+  color: var(--fill-primary, #243342);
+  font: menu;
+}
+
+#zlg-collection-shortcut { width:auto; min-width:76px; flex:0 0 auto; margin-inline-start:4px; padding-inline:5px; }
+#zlg-collection-shortcut .toolbarbutton-text { display:inline; flex:0 0 auto; min-width:max-content; margin-inline-start:4px; }
+#zlg-collection-shortcut .toolbarbutton-icon { -moz-context-properties:fill,stroke; fill:var(--fill-primary); stroke:var(--fill-primary); }
+
+.zlg-loading,
+.zlg-empty {
+  padding: 12px;
+  color: var(--fill-secondary, #65717e);
+  line-height: 1.45;
+}
+
+.zlg-relation-card {
+  border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  border-left: 3px solid #4f7cff;
+  border-radius: 7px;
+  padding: 9px 10px;
+  background: color-mix(in srgb, Canvas 96%, #4f7cff 4%);
+}
+
+.zlg-relation-top,
+.zlg-pane-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.zlg-type,
+.zlg-status,
+.zlg-warning,
+.zlg-guard {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 0.82em;
+  line-height: 1.45;
+}
+
+.zlg-type { color: #3157b7; background: #eaf0ff; }
+.zlg-type-modifies { color: #5d3fb5; background: #eee9ff; }
+.zlg-type-usesData { color: #087a7a; background: #e3f8f7; }
+.zlg-type-comparesWith { color: #925b12; background: #fff2dd; }
+.zlg-type-cites { color: #5d6878; background: #edf0f4; }
+.zlg-status { color: #167353; background: #e4f6ef; }
+.zlg-warning { color: #a45810; background: #fff0d8; }
+.zlg-guard { color: #66717e; background: #edf0f4; }
+
+.zlg-target-title {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 7px 0 3px;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+  font-weight: 650;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.zlg-target-title:hover { color: #315fc4; text-decoration: underline; }
+.zlg-comment { margin: 4px 0; color: var(--fill-secondary, #4e5d6c); line-height: 1.42; }
+.zlg-meta { color: var(--fill-tertiary, #73808e); font-size: 0.86em; line-height: 1.4; }
+.zlg-pane-footer { margin-top: 2px; }
+.zlg-pane-footer button { padding: 5px 10px; }

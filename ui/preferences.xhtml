@@ -1,0 +1,54 @@
+<vbox id="zlg-settings-root" class="zlg-settings-header" onload="Zotero.LiteratureGraphPreferences.initializeUI(this)">
+</vbox>
+<groupbox class="zlg-settings-section">
+  <html:div class="zlg-settings-field">
+    <html:label for="zlg-settings-language"><html:span data-zlg-text="语言">语言</html:span></html:label>
+    <html:select id="zlg-settings-language"><html:option value="auto" data-zlg-text="跟随 Zotero">跟随 Zotero</html:option><html:option value="zh-CN" data-zlg-text="简体中文">简体中文</html:option><html:option value="en-US">English</html:option></html:select>
+  </html:div>
+  <html:p class="zlg-settings-help"><html:span data-zlg-text="语言设置保存后立即生效。">语言设置保存后立即生效。</html:span></html:p>
+</groupbox>
+<groupbox class="zlg-settings-section">
+  <label><html:h2>OpenAlex</html:h2></label>
+  <html:p id="zlg-settings-key-status" class="zlg-settings-status" role="status" aria-live="polite"></html:p>
+  <html:label for="zlg-settings-api-key"><html:span data-zlg-text="API Key（可选）">API Key（可选）</html:span></html:label>
+  <html:div class="zlg-settings-key-row">
+    <html:input id="zlg-settings-api-key" type="password" autocomplete="off" spellcheck="false" maxlength="1024" aria-describedby="zlg-settings-key-help"/>
+    <html:button id="zlg-settings-show-key" type="button" aria-pressed="false"><html:span data-zlg-text="显示">显示</html:span></html:button>
+  </html:div>
+  <html:p id="zlg-settings-key-help" class="zlg-settings-help"><html:span data-zlg-text="Key 保存在本机，不加密；留空保留。">Key 保存在本机，不加密；留空保留。</html:span></html:p>
+  <html:div class="zlg-settings-service-actions">
+    <html:button id="zlg-settings-clear-key" type="button"><html:span data-zlg-text="清除 Key">清除 Key</html:span></html:button>
+    <html:a href="https://openalex.org/settings/api" class="zlg-settings-link"><html:span data-zlg-text="获取免费 Key">获取免费 Key</html:span></html:a>
+    <html:a href="https://help.openalex.org/access/example-costs/" class="zlg-settings-link"><html:span data-zlg-text="额度说明">额度说明</html:span></html:a>
+  </html:div>
+</groupbox>
+<groupbox class="zlg-settings-section">
+  <label><html:h2><html:span data-zlg-text="图谱与查找">图谱与查找</html:span></html:h2></label>
+  <html:div class="zlg-settings-field">
+    <html:label for="zlg-settings-result-limit"><html:span data-zlg-text="默认结果数">默认结果数</html:span></html:label>
+    <html:select id="zlg-settings-result-limit"><html:option value="10" data-zlg-text="10 篇">10 篇</html:option><html:option value="20" data-zlg-text="20 篇">20 篇</html:option><html:option value="40" data-zlg-text="40 篇">40 篇</html:option></html:select>
+  </html:div>
+  <html:p class="zlg-settings-help"><html:span data-zlg-text="新窗口生效。">新窗口生效。</html:span></html:p>
+  <html:div class="zlg-settings-field">
+    <html:label for="zlg-settings-node-size"><html:span data-zlg-text="节点大小">节点大小</html:span></html:label>
+    <html:select id="zlg-settings-node-size"><html:option value="citations" data-zlg-text="被引量">被引量</html:option><html:option value="degree" data-zlg-text="连接数">连接数</html:option><html:option value="uniform" data-zlg-text="统一">统一</html:option></html:select>
+  </html:div>
+  <html:label class="zlg-settings-check" title="打开图谱时更新 OpenAlex 被引量" data-zlg-title="打开图谱时更新 OpenAlex 被引量"><html:input id="zlg-settings-auto-refresh" type="checkbox"/><html:span data-zlg-text="自动更新被引量">自动更新被引量</html:span></html:label>
+  <html:p class="zlg-settings-help"><html:span data-zlg-text="关闭后，文献匹配和手动查找仍会联网。">关闭后，文献匹配和手动查找仍会联网。</html:span></html:p>
+</groupbox>
+<groupbox class="zlg-settings-section">
+  <html:details class="zlg-settings-advanced">
+    <html:summary><html:span data-zlg-text="数据与高级选项">数据与高级选项</html:span></html:summary>
+    <html:div>
+      <html:p class="zlg-settings-help"><html:span data-zlg-text="联网仅发送 DOI、标题或作品 ID，不发送 PDF、笔记或文献集名称。">联网仅发送 DOI、标题或作品 ID，不发送 PDF、笔记或文献集名称。</html:span></html:p>
+      <html:p id="zlg-settings-persistence" class="zlg-settings-help"></html:p>
+      <html:label class="zlg-settings-check"><html:input id="zlg-settings-demo" type="checkbox"/><html:span data-zlg-text="显示内置示例关系">显示内置示例关系</html:span></html:label>
+      <html:p class="zlg-settings-help"><html:span data-zlg-text="仅用于独立演示图，不混入真实文献关系。">仅用于独立演示图，不混入真实文献关系。</html:span></html:p>
+    </html:div>
+  </html:details>
+</groupbox>
+<hbox class="zlg-settings-actions">
+  <html:button id="zlg-settings-save" class="zlg-settings-primary" type="button" disabled="disabled"><html:span data-zlg-text="保存设置">保存设置</html:span></html:button>
+  <html:button id="zlg-settings-reset" type="button" title="恢复默认选项，保留已保存的 Key" data-zlg-title="恢复默认选项，保留已保存的 Key"><html:span data-zlg-text="重置选项">重置选项</html:span></html:button>
+</hbox>
+<html:p id="zlg-settings-feedback" class="zlg-settings-feedback" role="status" aria-live="polite"></html:p>

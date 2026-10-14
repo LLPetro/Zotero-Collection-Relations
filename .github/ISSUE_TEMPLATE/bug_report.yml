@@ -1,0 +1,36 @@
+name: 问题反馈
+description: 报告安装、图谱或查找问题
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: 请使用示例文献复现；不要提交 API Key、账户信息、笔记或完整个人文库。
+  - type: input
+    id: versions
+    attributes:
+      label: 插件与 Zotero 版本
+      placeholder: "例如：插件 0.8.7，Zotero 9.0.6"
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: 操作系统
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 预期与实际表现
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 示例截图（可选）

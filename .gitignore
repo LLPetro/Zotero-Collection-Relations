@@ -1,0 +1,38 @@
+# Local recovery, publication staging and machine-specific reports
+.local/
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+!.env.example
+
+# Personal library snapshots and internal acceptance evidence
+/docs/native-*
+/docs/previews*
+/docs/[0-9][0-9]_*.md
+!/docs/04_ARCHITECTURE.md
+/DESIGN.md
+/demo/
+/scripts/native_*.js
+/scripts/native_bridge.py
+/scripts/live_*.js
+
+# Build output stays outside the source repository
+/dist/
+
+# Private instruction files and local tool state
+AGENTS.md
+CLAUDE.md
+.codex/
+.claude/
+.agents/
+
+# Personal databases, documents and editor state
+*.pdf
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+.vscode/
+.idea/
